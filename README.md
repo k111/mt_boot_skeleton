@@ -21,7 +21,7 @@ CSSは、BootStrapをCDNで使用。
 ウェブサイトやブログをまとめて再構築できるプラグイン |
 | [UploadDir](http://labs.m-logic.jp/cat2/uploaddir/) |アップロードディレクトリを指定できるプラグイン |
 | [Page Bute](http://www.skyarc.co.jp/engineerblog/entry/2642.html) | 一覧ページ分割プラグイン |
-| [FixEntryPreference](https://plugins.movabletype.jp/author88366/fixentrypreference.html) | エントリおよび、ウェブページの編集画面の、入力フィールドの表示項目と表示の順番を固定するプラグイン |
+| [FixEntryPreference](https://plugins.movabletype.jp/author88366/fixentrypreference.html) | 入力フィールドの表示項目と表示の順番を固定するプラグイン |
 | [DuplicateEntry](http://www.mtcms.jp/movabletype-blog/plugins/duplicateentry/200905221997.html) | 記事複製プラグイン |
 | [FastestPreview](https://plugins.movabletype.jp/taku_amano/fastestpreview.html) | 記事のリアルタイムプレビューにするプラグイン |
 | [InvalidBasename](https://plugins.movabletype.jp/u-pyon/invalidbasename.html) | ファイル名の重複を防ぐプラグイン |
