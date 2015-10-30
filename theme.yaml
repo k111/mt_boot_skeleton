@@ -1,0 +1,164 @@
+label: 'MT Boot skeleton'
+id: mt_boot_skeleton
+version: 0.7
+name: 'MT Boot skeleton'
+author_link: https://github.com/k111
+author_name: k111
+class: blog
+description: 'MovableType Starter Template Set'
+thumbnail_file: thumb.png
+thumbnail_file_medium: thumb-medium.png
+thumbnail_file_small: thumb-small.png
+elements:
+  default_prefs:
+    component: core
+    importer: default_prefs
+    data:
+      allow_unreg_comments: 0
+      allow_reg_comments: 0
+      allow_comments_default: 0
+      allow_pings: 0
+      allow_pings_default: 0
+  default_categories:
+    component: ~
+    data:
+      cat1:
+        children:
+          cat_sub:
+            label: サブカテゴリ
+        label: カテゴリ01
+      cat2:
+        label: カテゴリ02
+      cat3:
+        label: カテゴリ03
+    importer: default_categories
+  default_folders:
+    component: ~
+    data:
+      company:
+        label: 企業情報
+      contact:
+        label: お問い合わせ
+      service:
+        label: サービス
+    importer: default_folders
+
+  default_pages:
+    component: core
+    importer: default_pages
+    name: Default Pages
+    data:
+      about:
+        basename: index
+        title: '会社概要'
+        text: '会社概要ページです。'
+        folder: company
+      about_location:
+        basename: business
+        title: '事業概要'
+        text: '事業概要ページです。'
+        folder: company
+      about_philosophy:
+        basename: philosophy
+        title: '企業理念'
+        text: '企業理念ページです。'
+        folder: company
+      about_history:
+        basename: history
+        title: '沿革'
+        text: '沿革ページです。'
+        folder: company
+      service:
+        basename: index
+        title: 'サービス'
+        text: 'サービスページです。'
+        folder: service
+      contact:
+        basename: index
+        title: 'お問い合わせ'
+        text: 'お問い合わせページです。'
+        folder: contact
+      error:
+        basename: 404
+        title: '404 Nout Found'
+        text: 'お探しのページは見つかりませんでした。'
+  template_set:
+    component: ~
+    data:
+      base_path: templates
+      label: 'exported_template set'
+      templates:
+        archive:
+          category_entry_listing:
+            label: カテゴリ別記事リスト
+            mappings:
+              category:
+                archive_type: Category
+                file_template: <mt:IfWebsite>info/</mt:IfWebsite>category/%-c/%i
+                preferred: '1'
+          yearly_entry_listing:
+            label: 年別ブログ記事リスト
+            mappings:
+              yearly:
+                archive_type: Yearly
+                file_template: <mt:IfWebsite>info/</mt:IfWebsite>archive/%y/%i
+                preferred: '1'
+        index:
+          feed_recent:
+            label: 最新記事のフィード
+            outfile: atom.xml
+            rebuild_me: '1'
+          index_page:
+            label: <01>インデックスページ
+            outfile: index.html
+            rebuild_me: '1'
+          main_index:
+            label: <02>お知らせトップページ
+            outfile: info/index.html
+            rebuild_me: '1'
+        individual:
+          entry:
+            label: 記事
+            mappings:
+              individual:
+                archive_type: Individual
+                file_template: <mt:IfWebsite>info/</mt:IfWebsite>article/%y%m%d_<mt:EntryBasename>.html
+                preferred: '1'
+        module:
+          mod_html_head:
+            label: html_header
+          mod_site_footer:
+            label: site_footer
+          mod_site_header:
+            label: site_header
+          mod_ogp:
+            label: ogp
+          mod_breadcrumb:
+            label: breadcrumb
+          mod_loop_list:
+            label: loop_list
+          mod_sidebar_entry:
+            label: sidebar_entry
+          mod_sidebar_page:
+            label: sidebar_page
+        page:
+          page:
+            label: ウェブページ
+            mappings:
+              page:
+                archive_type: Page
+                file_template: '%c/%f'
+                preferred: '1'
+        system:
+          comment_preview:
+            label: コメントプレビュー
+          comment_response:
+            label: コメント完了
+          dynamic_error:
+            label: ダイナミックパブリッシングエラー
+          popup_image:
+            label: ポップアップ画像
+          search_results:
+            label: 検索結果
+    importer: template_set
+
