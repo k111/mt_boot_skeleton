@@ -17,8 +17,7 @@ CSSは、BootStrapをCDNで使用。
 
 | plugin | summary |
 | ---- | --- |
-| [QuickRebuild](http://tec.toi-planning.net/mt/quickrebuild/quickrebuild-061/) |
-ウェブサイトやブログをまとめて再構築できるプラグイン |
+| [QuickRebuild](http://tec.toi-planning.net/mt/quickrebuild/quickrebuild-061/) | ウェブサイトやブログをまとめて再構築できるプラグイン |
 | [UploadDir](http://labs.m-logic.jp/cat2/uploaddir/) |アップロードディレクトリを指定できるプラグイン |
 | [Page Bute](http://www.skyarc.co.jp/engineerblog/entry/2642.html) | 一覧ページ分割プラグイン |
 | [FixEntryPreference](https://plugins.movabletype.jp/author88366/fixentrypreference.html) | 入力フィールドの表示項目と表示の順番を固定するプラグイン |
