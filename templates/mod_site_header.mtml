@@ -1,0 +1,63 @@
+<mt:Ignore>
+=======================================================================
+[サイトヘッダーパーツ]
+
+=======================================================================
+</mtIgnore>
+<!-- [ HEADER-AREA ] -->
+<header>
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="<mt:WebsiteURL>"><mt:WebsiteName remove_html='1'></a>
+<!-- /.navbar-header --></div>
+<div id="navbar" class="navbar-collapse collapse">
+<form method="get" action="<mt:CGIPath><mt:SearchScript>" class="navbar-form navbar-right">
+<div class="form-group">
+<input type="text" name="search" id="search" class="form-control" placeholder="keyword" value="<mt:SearchString>">
+<!-- /.form-group --></div>
+<button type="submit" class="btn btn-primary">Search</button>
+</form>
+<!--/.navbar-collapse --></div>
+<!-- /.container --></div>
+
+<div class="navbar navbar-inverse" style="border-radius:0;">
+<div class="container">
+
+<ul class="nav navbar-nav">
+<mt:Ignore>各テンプレート内の変数gnavで現在地判定</mt:Ignore>
+<li<mt:If name='gnav' eq='1'> class="active"</mt:If>><a href="/">HOME</a></li>
+<li<mt:If name='gnav' eq='2'> class="active"</mt:If>><a href="/info/">お知らせ</a></li>
+
+<mt:Ignore>ページだった場合、フォルダのパスで現在地判定</mt:Ignore>
+<mt:If name='page_template'>
+<mt:ParentFolders>
+<mt:setVarBlock name='parent_foler'><mt:FolderPath></mt:SetVarBlock>
+</mt:ParentFolders>
+</mt:If>
+<li<mt:If name="parent_foler" eq="service"> class="active"</mt:If>><a href="/service/">サービス</a></li>
+<li<mt:If name="parent_foler" eq="company"> class="active"</mt:If>><a href="/company/">企業情報</a></li>
+<li<mt:If name="parent_foler" eq="contact"> class="active"</mt:If>><a href="/contact/">お問い合わせ</a></li>
+
+<mt:Ignore>ウェブサイト配下にブログがあった場合</mt:Ignore>
+<mt:WebsiteHasBlog>
+<mt:IfWebsite>
+<li<mt:If name='gnav' eq='10'> class="active"</mt:If>><a href="/blog/">ブログ</a></li>
+</mt:IfWebsite>
+</mt:WebsiteHasBlog>
+<mt:IfBlog>
+<li class="active"><a href="/blog/">ブログ</a></li>
+</mt:IfBlog>
+
+</ul>
+
+<!-- /.container --></div>
+<!-- /.navbar --></div>
+
+</header>
+<!-- /[ HEADER-AREA ] -->

@@ -1,0 +1,123 @@
+<mt:For regex_replace="/^[\ \t\r\n]+/mg","">
+<mt:Ignore>MTタグによる不要な改行を削除</mt:Ignore>
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="<mt:PublishCharset>">
+<title><mt:BlogName encode_html='1'></title>
+<meta name="description" content="<mt:BlogDescription remove_html='1' encode_htm='1'>">
+
+<mt:Ignore>モジュール：HTMLヘッダー読み込み</mt:Ignore>
+<mt:Include module='html_header'>
+
+<mt:Ignore>モジュール：OGP読み込み</mt:Ignore>
+<mt:Include module='ogp'>
+</head>
+<mt:Ignore>グローバルナビ変数を設定</mt:Ignore>
+<mt:IfWebsite>
+<mt:Setvar name='gnav' value='1'>
+<mt:Else>
+<mt:Setvar name='gnav' value='10'>
+</mt:IfWebsite>
+
+<body>
+<mt:Ignore>モジュール：ヘッダー読み込み</mt:Ignore>
+<mt:Include module='site_header'>
+
+<div class="jumbotron" style="margin-top: -20px;">
+<div class="container">
+<h1><mt:BlogName remove_html='1'></h1>
+<mt:if tag='BlogDescription'>
+<p><mt:BlogDescription remove_html='1'></p>
+</mt:if>
+<!-- /.container --></div>
+<!-- /.jumbotron --></div>
+
+
+<div class="container">
+
+<div style="margin-bottom:5em;">
+<h2 class="text-center page-header">Infomation</h2>
+<mt:Entries lastn="5">
+<mt:EntriesHeader></mt:EntriesHeader>
+<dl class="dl-horizontal">
+<dt><mt:EntryDate format="%Y-%m-%d"></dt>
+<dd><a href="<mt:EntryPermalink>"><mt:EntryTitle remove_html='1'></a></dd>
+</dl>
+<mt:EntriesFooter></mt:EntriesFooter>
+</mt:Entries>
+</div>
+
+
+<div class="row" style="margin-bottom:5em;">
+
+<div class="col-md-4">
+<h2 class="text-center">Works</h2>
+<p class="text-center h1"><i class="glyphicon glyphicon-education"></i></p>
+<p>説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。</p>
+<p class="text-center"><a href="#" class="btn btn-primary" role="button">詳細をみる</a></p>
+<!-- /.col-md-4 --></div>
+
+<div class="col-md-4">
+<h2 class="text-center">Service</h2>
+<p class="text-center h1"><i class="glyphicon glyphicon-cloud"></i></p>
+<p>説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。</p>
+<p class="text-center"><a href="#" class="btn btn-primary" role="button">詳細をみる</a></p>
+<!-- /.col-md-4 --></div>
+
+<div class="col-md-4">
+<h2 class="text-center">About</h2>
+<p class="text-center h1"><i class="glyphicon glyphicon-grain"></i></p>
+<p>説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。</p>
+<p class="text-center"><a href="#" class="btn btn-primary" role="button">詳細をみる</a></p>
+<!-- /.col-md-4 --></div>
+
+<!-- /.row --></div>
+
+
+<div class="row">
+<div class="col-sm-6 col-md-4">
+<div class="thumbnail">
+<img src="http://dummyimage.com/300x200/999/fff" alt="">
+<div class="caption">
+<h3>Thumbnail label</h3>
+<p>説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。</p>
+<p><a href="#" class="btn btn-primary" role="button">詳細をみる</a></p>
+<!-- /.caption --></div>
+<!-- /.thumbnail --></div>
+<!-- /.col-md-4 --></div>
+
+<div class="col-sm-6 col-md-4">
+<div class="thumbnail">
+<img src="http://dummyimage.com/300x200/999/fff" alt="">
+<div class="caption">
+<h3>Thumbnail label</h3>
+<p>説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。</p>
+<p><a href="#" class="btn btn-primary" role="button">詳細をみる</a></p>
+<!-- /.caption --></div>
+<!-- /.thumbnail --></div>
+<!-- /.col-md-4 --></div>
+
+<div class="col-sm-6 col-md-4">
+<div class="thumbnail">
+<img src="http://dummyimage.com/300x200/999/fff" alt="">
+<div class="caption">
+<h3>Thumbnail label</h3>
+<p>説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。</p>
+<p><a href="#" class="btn btn-primary" role="button">詳細をみる</a></p>
+<!-- /.caption --></div>
+<!-- /.thumbnail --></div>
+<!-- /.col-md-4 --></div>
+
+<!-- /.row --></div>
+
+
+<!-- /.container --></div>
+
+<mt:Ignore>モジュール：フッター読み込み</mt:Ignore>
+<mt:Include module='site_footer'>
+
+</body>
+</html
+</mt:For>

@@ -1,0 +1,62 @@
+<mt:For regex_replace="/^[\ \t\r\n]+/mg","">
+<mt:Ignore>MTタグによる不要な改行を削除</mt:Ignore>
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="<mt:PublishCharset>">
+<title><mt:CategoryLabel remove_html='1'><mt:IfWebsite> - お知らせ</mt:IfWebsite> - <mt:BlogName remove_html='1'></title>
+<meta name="description" content="<mt:CategoryDescription remove_html='1'>">
+
+<mt:Ignore>モジュール：HTMLヘッダー読み込み</mt:Ignore>
+<mt:Include module='html_header'>
+
+<mt:Ignore>モジュール：OGP読み込み</mt:Ignore>
+<mt:Include module='ogp'>
+</head>
+<mt:Ignore>グローバルナビ変数を設定</mt:Ignore>
+<mt:IfWebsite>
+<mt:Setvar name="gnav" value="2">
+<mt:Else>
+<mt:Setvar name="gnav" value="10">
+</mt:IfWebsite>
+
+<body>
+<mt:Ignore>モジュール：ヘッダー読み込み</mt:Ignore>
+<mt:Include module="site_header">
+
+<mt:Ignore>モジュール：パンくずリスト読み込み</mt:Ignore>
+<mt:Include module='breadcrumb'>
+
+<div class="container">
+<div class="row">
+
+<div class="col-md-9">
+
+<h1 class="page-header"><mt:ArchiveTitle remove_html='1'></h1>
+
+<mt:Ignore>ページ分割件数を設定（PageButeデフォルト10件）</mt:Ignore>
+<mt:setVar name='page_count' value='5'>
+
+<mt:Ignore>モジュール：一覧記事パーツ読み込み</mt:Ignore>
+<mt:Include module='loop_list'>
+
+<!-- /.col-md-9 --></div>
+
+
+<div class="col-md-3">
+
+<mt:Ignore>モジュール：サイドバー記事用読み込み</mt:Ignore>
+<mt:Include module="sidebar_entry">
+
+<!-- /.col-md-3 --></div>
+
+<!-- /.row --></div>
+<!-- /.container --></div>
+
+<mt:Ignore>モジュール：フッター読み込み</mt:Ignore>
+<mt:Include module='site_footer'>
+
+</body>
+</html
+</mt:For>

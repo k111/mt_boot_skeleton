@@ -1,0 +1,67 @@
+<mt:For regex_replace="/^[\ \t\r\n]+/mg","">
+<mt:Ignore>MTタグによる不要な改行を削除</mt:Ignore>
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="<mt:PublishCharset>">
+<title><mt:EntryTitle remove_html='1'> - <mt:BlogName encode_html='1'></title>
+<meta name="description" content="<mt:EntryExcerpt remove_html='1'>">
+
+<mt:Ignore>モジュール：HTMLヘッダー読み込み</mt:Ignore>
+<mt:Include module='html_header'>
+
+<mt:Ignore>モジュール：OGP読み込み</mt:Ignore>
+<mt:Include module='ogp'>>
+</head>
+
+<mt:Ignore>グローバルナビ変数を設定</mt:Ignore>
+<mt:IfWebsite>
+<mt:Setvar name="gnav" value="2">
+<mt:Else>
+<mt:Setvar name="gnav" value="10">
+</mt:IfWebsite>
+
+<body>
+<mt:Ignore>モジュール：ヘッダー読み込み</mt:Ignore>
+<mt:Include module='site_header'>
+
+<mt:Ignore>モジュール：パンくずリスト読み込み</mt:Ignore>
+<mt:Include module='breadcrumb'>
+
+<div class="container">
+<div class="row">
+
+<div class="col-md-9">
+
+<article>
+<h1 class="page-header"><mt:EntryTitle remove_html='1'></h1>
+<p class="text-right"><time datetime="<mt:EntryDate format='%Y-%m-%d'>"><mt:EntryDate format='%Y年%m月%d日'></time>
+<span class="badge"><mt:EntryCategory></span></p>
+
+<hr>
+
+<mt:EntryBody>
+<mt:EntryMore>
+
+</article>
+
+<!-- /.col-md-9 --></div>
+
+
+<div class="col-md-3">
+
+<mt:Ignore>モジュール：サイドバーページ用読み込み</mt:Ignore>
+<mt:Include module="sidebar_entry">
+
+<!-- /.col-md-3 --></div>
+
+<!-- /.row --></div>
+<!-- /.container --></div>
+
+<mt:Ignore>モジュール：フッター読み込み</mt:Ignore>
+<mt:Include module='site_footer'>
+
+</body>
+</html
+</mt:For>

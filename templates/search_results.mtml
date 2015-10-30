@@ -1,0 +1,162 @@
+<mt:For regex_replace="/^[\ \t\r\n]+/mg","">
+<mt:Ignore>MTタグによる不要な改行を削除</mt:Ignore>
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="<mt:PublishCharset>">
+<title>検索結果 - <mt:BlogName remove_html='1'></title>
+
+<mt:Ignore>モジュール：HTMLヘッダー読み込み</mt:Ignore>
+<mt:Include module='html_header'>
+
+<script type="text/javascript">
+      var user = <$mt:UserSessionState$>;
+<mt:IfMoreResults>
+      function getResults(page) {
+        page = parseInt(page);
+        if (timer) window.clearTimeout(timer);
+        var xh = mtGetXmlHttp();
+        if (!xh) return false;
+        var res = results[page];
+        if (!res) return;
+        var url = res['next_url'];
+        if (!url) return;
+
+        xh.open('GET', url + '&format=js', true);
+        xh.onreadystatechange = function() {
+          if ( xh.readyState == 4 ) {
+            if ( xh.status && ( xh.status != 200 ) ) {
+              // error - ignore
+            } else {
+              try {
+                var page_results = eval("(" + xh.responseText + ")");
+                if ( page_results['error'] == null )
+                  results[page + 1] = page_results['result'];
+              } catch (e) {
+              }
+            }
+          }
+      };
+      xh.send(null);
+    }
+
+    function swapContent(direction) {
+      if ( direction == undefined ) direction = 1;
+      var page_span = document.getElementById('current-page');
+      if (!page_span) return true;
+      var next_page = direction + parseInt(page_span.innerHTML);
+      var res = results[next_page];
+      if (!res) return true;
+      var content = res['content'];
+      if (!content) return true;
+      var div = document.getElementById('search-results');
+      if (!div) return true;
+      div.innerHTML = content;
+      timer = window.setTimeout("getResults(" + next_page + ")", 1*1000);
+      window.scroll(0, 0);
+      return false;
+    }
+<mt:Else>
+  <mt:IfPreviousResults>
+    function swapContent(direction) {
+      return true;
+    }
+  </mt:IfPreviousResults>
+</mt:IfMoreResults>
+</script>
+</head>
+
+<body>
+<mt:Ignore>モジュール：ヘッダー読み込み</mt:Ignore>
+<mt:Include module='site_header'>
+
+<mt:Ignore>モジュール：パンくずリスト読み込み</mt:Ignore>
+<mt:Include module="breadcrumb">
+
+<div class="container">
+
+<h1 class="page-header">検索結果</h1>
+
+<mt:SetVarTemplate id="search_results" name="search_results">
+<mt:SearchResults>
+<mt:SearchResultsHeader>
+<section id="search-results">
+<span id="current-page" class="hidden"><$mt:CurrentPage$></span>
+ 
+<h2><mt:SearchResultCount>件
+<MTIfStatic><mt:IfStraightSearch>
+「<$mt:SearchString$>」との該当記事がありました
+</mt:IfStraightSearch></MTIfStatic>
+<mt:IfTagSearch>
+タグ「<$mt:SearchString$>」が付けられているもの
+</mt:IfTagSearch>
+</h2>
+
+<div class="search-results-container autopagerize_page_element">
+</mt:SearchResultsHeader>
+
+<dl>
+<dt class="h3"><i class="glyphicon glyphicon-menu-right"></i><a href="<mt:EntryPermalink>"><mt:EntryTitle remove_html='1'></a></dt>
+<dd><small><mt:EntryPermalink></small></dd>
+<dd><mt:EntryExcerpt></dd>
+</dl>
+
+<mt:SearchResultsFooter>
+</div><div class="autopagerize_insert_before"></div>
+</section>
+
+<ul class="pager">
+<mt:IfMoreResults><li class="previous"><a rel="prev" href="<$mt:NextLink encode_html="1"$>" onclick="return swapContent();">過去の記事</a></li></mt:IfMoreResults>
+<mt:IfPreviousResults><li class="next"><a rel="next" href="<$mt:PreviousLink encode_html="1"$>" onclick="return swapContent(-1);">新しい記事</a></li></mt:IfPreviousResults>
+</ul>
+
+</mt:SearchResultsFooter>
+</mt:SearchResults>
+</mt:SetVarTemplate>
+
+<mt:Ignore>
+検索結果に該当があった場合
+（SetVarTemplateで作ったテンプレートを出力）
+</mt:Ignore>
+<$mt:Var name="search_results"$>
+
+<mt:Ignore>検索結果に該当がなかった場合</mt:Ignore>
+<mt:NoSearchResults>
+<section>
+<h2>
+<MTIfStatic><mt:IfStraightSearch>
+「<$mt:SearchString$>」と一致するもの
+</mt:IfStraightSearch></MTIfStatic>
+<mt:IfTagSearch>
+タグ「<$mt:SearchString$>」が付けられているもの
+</mt:IfTagSearch>
+</h2>
+<p>「<$mt:SearchString$>」と一致する結果は見つかりませんでした。</p>
+</section>
+</mt:NoSearchResults>
+
+<mt:Ignore>検索キーワド未入力でボタンクリック場合</mt:Ignore>
+<mt:NoSearch>
+<section>
+<h2 class="title">例</h2>
+<p>すべての単語が順序に関係なく検索されます。フレーズで検索したいときは引用符で囲んでください。</p>
+<pre><code>"movable type"</code></pre>
+<p>AND、OR、NOTを入れることで論理検索を行うこともできます。</p>
+<pre><code>個人 OR 出版</code></pre>
+<pre><code>個人 NOT 出版</code></pre>
+</section>
+</mt:NoSearch>
+
+<!-- /.container --></div>
+
+<mt:Ignore>モジュール：フッター読み込み</mt:Ignore>
+<mt:Include module='site_footer'>
+
+<mt:Ignore>
+<script src="<$mt:Link template="javascript_theme" encode_html="1">"></script>
+</mt:Ignore>
+
+</body>
+</html
+</mt:For>

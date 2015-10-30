@@ -1,0 +1,54 @@
+<mt:For regex_replace="/^[\ \t\r\n]+/mg","">
+<mt:Ignore>MTタグによる不要な改行を削除</mt:Ignore>
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="<mt:PublishCharset>">
+<title>お知らせ - <mt:BlogName encode_html="1"></title>
+<meta name="description" content="<mt:BlogDescription remove_html='1' encode_htm='1'>">
+
+<mt:Ignore>モジュール：HTMLヘッダー読み込み</mt:Ignore>
+<mt:Include module="html_header">
+
+<mt:Ignore>モジュール：OGP読み込み</mt:Ignore>
+<mt:Include module="ogp">
+</head>
+
+<body>
+<mt:Ignore>グローバルナビ変更を設定</mt:Ignore>
+<mt:Setvar name="gnav" value="2">
+
+<mt:Ignore>モジュール：ヘッダー読み込み</mt:Ignore>
+<mt:Include module="site_header">
+
+<mt:Ignore>モジュール：パンくずリスト読み込み</mt:Ignore>
+<mt:Include module="breadcrumb">
+
+<div class="container">
+<div class="row">
+
+<div class="col-md-9">
+
+<h1 class="page-header">お知らせ</h1>
+
+<mt:Include module="loop_list">
+
+<!-- /.col-md-9 --></div>
+
+
+<div class="col-md-3">
+
+<mt:Include module="sidebar_entry">
+
+<!-- /.col-md-3 --></div>
+
+<!-- /.row --></div>
+<!-- /.container --></div>
+
+<mt:Ignore>モジュール：フッター読み込み</mt:Ignore>
+<mt:Include module="site_footer">
+
+</body>
+</html>
+</mt:For>

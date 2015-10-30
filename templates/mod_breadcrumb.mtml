@@ -1,0 +1,92 @@
+<mt:Ignore>
+=======================================================================
+[パンくずリストパーツ]
+
+=======================================================================
+</mtIgnore>
+
+<div class="container">
+<ul class="breadcrumb">
+<li><a href="/">ホーム</a></li>
+<mt:IgNore>ウェブサイト===================================</mt:Ignore>
+<mt:IfWebsite>
+
+<mt:IgNore>ウェブサイト：ページ===============</mt:Ignore>
+<mt:If name="page_template">
+<mt:If tag="PageBaseName" eq="index">
+<mt:SetVar name="exclude_current" value="1">
+<mt:Else>
+<mt:SetVar name="exclude_current" value="0">
+</mt:if>
+<mt:setVarBlock name='folder_title'><mt:ParentFolders><mt:FolderLabel remove_html='1'></mt:ParentFolders></mt:SetVarBlock>
+<mt:setVarBlock name='page_title'><mt:pageTitle remove_html='1'></mt:SetVarBlock>
+<mtIf name='page_title' ne='$folder_title'>
+<mt:ParentFolders>
+<li><a href="<mt:BlogURL><mt:FolderPath>/"><mt:FolderLabel remove_html='1'></a></li>
+</mt:ParentFolders>
+</mt:If>
+<li><mt:PageTitle remove_html='1'></li>
+</mt:If>
+
+<mt:IgNore>ウェブサイト：ブログトップ===============</mt:Ignore>
+<mt:If name="main_index">
+<li>お知らせ</li>
+
+<mt:IgNore>ウェブサイト：記事===============</mt:Ignore>
+<mt:ElseIf name="entry_archive">
+<li><a href="<mt:Link template='main_index' encode_html='1'>">お知らせ</a></li>
+<li><mt:EntryTitle remove_html='1'></li>
+
+<mt:IgNore>ウェブサイト：アーカイブ===============</mt:Ignore>
+<mt:ElseIf name="archive_listing">
+<li><a href="<mt:Link template='main_index' encode_html='1'>">お知らせ</a></li>
+<li><mt:ArchiveTitle remove_html='1'></li>
+
+<mt:IgNore>ウェブサイト：検索結果===============</mt:Ignore>
+<mt:Elseif name="search_results">
+<li>検索結果</li>
+</mt:If>
+</mt:IfWebsite>
+
+<mt:IgNore>ブログ===================================</mt:Ignore>
+<mt:IfBlog>
+
+<mt:IgNore>ブログ：ページ===============</mt:Ignore>
+<mt:If name="page_template">
+<mt:If tag="PageBaseName" eq="index">
+<mt:SetVar name="exclude_current" value="1">
+<mt:Else>
+<mt:SetVar name="exclude_current" value="0">
+</mt:if>
+<mt:setVarBlock name='folder_title'><mt:ParentFolders><mt:FolderLabel remove_html='1'></mt:ParentFolders></mt:SetVarBlock>
+<mt:setVarBlock name='page_title'><mt:pageTitle remove_html='1'></mt:SetVarBlock>
+<mtIf name='page_title' ne='$folder_title'>
+<mt:ParentFolders>
+<li><a href="<mt:BlogURL><mt:FolderPath>/"><mt:FolderLabel remove_html='1'></a></li>
+</mt:ParentFolders>
+</mt:If>
+<li><mt:PageTitle remove_html='1'></li>
+</mt:If>
+
+<mt:IgNore>ブログ：ブログトップ===============</mt:Ignore>
+<mt:If name="index_page">
+<li><mt:BlogName remove_htm='1'></li>
+
+<mt:IgNore>ブログ：記事===============</mt:Ignore>
+<mt:ElseIf name="entry_archive">
+<li><a href="<mt:BlogURL encode_html='1'>"><mt:BlogName remove_htm='1'></a></li>
+<li><mt:EntryTitle remove_html='1'></li>
+
+<mt:IgNore>ブログ：アーカイブ===============</mt:Ignore>
+<mt:ElseIf name="archive_listing">
+<li><a href="<mt:BlogURL encode_html='1'>"><mt:BlogName remove_htm='1'></a></li>
+<li><mt:ArchiveTitle remove_html='1'></li>
+
+<mt:IgNore>ブログ：検索結果===============</mt:Ignore>
+<mt:Elseif name="search_results">
+<li><a href="<mt:BlogURL encode_html='1'>"><mt:BlogName remove_htm='1'></a></li>
+<li>検索結果</li>
+</mt:If>
+</mt:IfBlog>
+</ul>
+<!-- /.container --></div>

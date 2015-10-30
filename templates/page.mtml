@@ -1,0 +1,57 @@
+<mt:For  regex_replace='/^[\ \t\r\n]+/mg',''>
+<mt:Ignore>MTタグによる不要な改行を削除</mt:Ignore>
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="<mt:PublishCharset>">
+<title><mt:PageTitle remove_html='1'> - <mt:WebsiteName remove_html='1'></title>
+<meta name="description" content="<mt:PageExcerpt remove_html='1'>">
+
+<mt:Ignore>モジュール：HTMLヘッダー読み込み</mt:Ignore>
+<mt:Include module='html_header'>
+
+<mt:Ignore>モジュール：OGP読み込み</mt:Ignore>
+<mt:Include module='ogp'>
+</head>
+
+<mt:Ignore>ページIDを取得</mt:Ignore>
+<mt:PageID setVar='current_id'>
+
+<body>
+<mt:Ignore>モジュール：ヘッダー読み込み</mt:Ignore>
+<mt:Include module='site_header'>
+
+<mt:Include module='breadcrumb'>
+
+<div class="container">
+<div class="row">
+
+<div class="col-md-9">
+
+<aritcle>
+<h1 class="page-header"><mt:PageTitle remove_html='1'></h1>
+<div>
+<$mt:PageBody$>
+<$mt:PageMore$>
+</div>
+</aritcle>
+
+<!-- /.com-md-9--></div>
+
+<div class="col-md-3">
+
+<mt:Ignore>モジュール：サイドバー読み込み</mt:Ignore>
+<mt:Include module='sidebar_page'>
+
+<!-- /.col-md-3 --></div>
+
+<!-- /.row --></div>
+<!-- /.container --></div>
+
+<mt:Ignore>モジュール：フッター読み込み</mt:Ignore>
+<mt:Include module='site_footer'>
+
+</body>
+</html
+</mt:For>

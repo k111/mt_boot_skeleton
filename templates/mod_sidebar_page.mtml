@@ -1,0 +1,19 @@
+<mt:Ignore>
+=======================================================================
+[サイドバーページ用パーツ]
+
+=======================================================================
+</mtIgnore>
+
+<section>
+<mt:ParentFolders>
+<h3><a href="<mt:BlogURL><mt:FolderPath>/"><mt:FolderLabel></a></h3>
+</mt:ParentFolders>
+
+<mt:setVarBlock name='folder_label'><mt:ParentFolders name='flolder'><mt:FolderLabel></mt:ParentFolders></mt:setVarBlock>
+<mt:Pages folder='$folder_label' lastn='0' sort_by='title' sort_order='ascend'>
+<mt:PagesHeader><ul class="nav nav-pills nav-stacked"></mt:PagesHeader>
+<li<mt:If tag='PageID' eq='$current_id'> class="active"</mt:If>><a href="<mt:PagePermalink>"><mt:PageTitle remove_html='1'></a></li>
+<mt:PagesFooter></ul></mt:PagesFooter>
+</mtPages>
+</section>

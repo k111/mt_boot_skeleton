@@ -1,0 +1,51 @@
+<mt:Ignore>
+=======================================================================
+[記事一覧パーツ]
+PageButeプラグインによるページ分割対応済み
+変数page_count（1ページ表示件数）は、読み込まれるテンプレート側にて設定
+ex) <mt:SetVar name="page_count" "5">
+=======================================================================
+</mtIgnore>
+
+<mt:PageContents count="$page_count">
+<mtIgnore>記事ループここから</mtIgnore>
+<mt:Entries lastn="0">
+<mt:EntriesHeader></mt:EntriesHeader>
+<dl class="dl-horizontal">
+<dt><mt:EntryDate fomat="Y年m月d日"></dt>
+<dd><i class="glyphicon glyphicon-menu-right"></i> <a href="<mt:EntryPermalink>"><mt:EntryTitle remove_html="1"></a>
+<mt:IfCategory>　<span class="badge"><mt:EntryCategory></mt:IfCategory></span></dd>
+</dl>
+<mt:EntriesFooter></mt:EntriesFooter>
+<mt:PageSeparator>
+</mt:Entries>
+
+</mt:PageContents>
+
+
+<mtIgnore>ページャーパーツ</mtIgnore>
+<MTPagination>
+<MTPaginationHeader>
+<div class="text-center">
+<ul class="pagination">
+<MTIfPaginationFirst><li><a href="<$MTPaginationFirst$>">&laquo;</a></li>
+<MTElse>
+<li class="disabled"><span>&laquo;</span></li>
+</MTIfPaginationFirst>
+</MTPaginationHeader>
+<MTIfPaginationCurrent>
+<mt:ignore>現在のページ</mt:ignore>
+<li class="active"><a href="<$MTPaginationLink$>"><MTPaginationLink element="number"></a></li>
+<MTElse>
+<mt:ignore>それ以外(遷移用のリンクあり)</mt:ignore>
+<li><a href="<$MTPaginationLink$>"><$MTPaginationLink element="number"$></a></li>
+</MTIfPaginationCurrent>
+<MTPaginationFooter>
+<MTIfPaginationLast><li><a href="<$MTPaginationLast$>">&raquo;</a></li>
+<MTElse>
+<li class="disabled"><span>&raquo;</span></li>
+</MTIfPaginationLast>
+</ul>
+</div>
+</MTPaginationFooter>
+</MTPagination>

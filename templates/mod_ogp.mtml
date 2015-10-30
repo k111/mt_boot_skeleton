@@ -1,0 +1,129 @@
+<mt:Ignore>
+=======================================================================
+[OGPパーツ]
+ogimageは、ウェブサイト直下のopg.pngを設定
+記事・ページに画像がある場合は、その画像を設定
+=======================================================================
+</mtIgnore>
+
+<!-- [ Open Graph Protocol ] -->
+<meta property="og:locale" content="ja_jp">
+
+<mt:Ignore>og:type分岐</mt:Ignore>
+<mt:If name='index_page'>
+<mt:IfWebsite>
+<meta property="og:type" content="website">
+</mt:IfWebsite>
+<mt:Else>
+<meta property="og:type" content="article">
+</mt:If>
+
+<mt:Ignore>ウェブサイトの場合===================================</mt:Ignore>
+<mt:IfWebsite>
+
+<mt:Ignore>各種変数設定（ウェブサイト名、ウェブサイトURL、OGP画像パス）</mt:Ignore>
+<mt:SetVarBlock name='website_name'><mt:WebsiteName remove_html='1'></mt:SetVarBlock>
+<mt:SetVarBlock name='website_url'><mt:WebsiteURL></mt:SetVarBlock>
+<mt:SetVarBlock name='og_image_top'><mt:WebsiteURL>opg.png</mt:SetVarBlock>
+
+<mt:Ignore>ウェブサイト：トップページ</mt:Ignore>
+<mt:If name='index_page'>
+<meta property="og:title" content="<mt:Var name='website_name'>">
+<meta property="og:site_name" content="<mt:Var name='website_name'>">
+<meta property="og:url" content="<mt:Var name='website_url'>">
+<meta property="og:description" content="<mt:WebsiteDescription remove_html='1'>">
+<meta property="og:image" content="<mt:Var name='ogimagetop'>">
+
+<mt:Ignore>ウェブサイト：お知らせトップ</mt:Ignore>
+<mt:Elseif name='main_index'>
+<meta property="og:title" content="お知らせ - <mt:Var name='website_name'>">
+<meta property="og:site_name" content="<mt:Var name='website_name'>">
+<meta property="og:url" content="<mt:Var name='website_url'>nfo/">
+<meta property="og:description" content="<mt:Var name='website_name'>のお知らせページです。">
+<meta property="og:image" content="<mt:Var name='og_image_top'>">
+
+<mt:Ignore>ウェブサイト：ページ</mt:Ignore>
+<mt:Elseif name='page_template'>
+<meta property="og:title" content="<mt:PageTitle remove_html='1'> - <mt:Var name='website_name'>">
+<meta property="og:site_name" content="<mt:Var name='website_name'>">
+<meta property="og:url" content="<mt:PagePermalink>">
+<meta property="og:description" content="<mt:PageExcerpt remove_html='1'>">
+<mt:SetVarBlock name='img'><mt:PageAssets type='image'>images</mt:PageAssets></mt:SetVarBlock>
+<meta property="og:image" content="<mt:If name='img1' like='image'><mt:PageAssets lastn='1'><mt:AssetURL></mt:PageAssets><mt:Else><mt:Var name='og_image_top'></mt:If>">
+
+<mt:Ignore>ウェブサイト：記事</mt:Ignore>
+<mt:Elseif name="entry_archive">
+<meta property="og:title" content="<mt:EntryTitle remove_html='1'> - お知らせ - <mt:Var name='website_name'>">
+<meta property="og:site_name" content="<mt:Var name='website_name'>">
+<meta property="og:url" content="<mt:EntryPermalink>">
+<meta property="og:description" content="<mt:EntryExcerpt remove_html='1' encode_html='1'>">
+<mt:SetVarBlock name='img2'><mt:EntryAssets type='image'>images</mt:EntryAssets></mt:SetVarBlock>
+<meta property="og:image" content="<mt:If name='img2' like='image'><mt:EntryAssets lastn='1'><mt:AssetURL></mt:EntryAssets><mt:Else><mt:Var name='og_image_top'></mt:If>">
+
+<mt:Ignore>ウェブサイト：検索結果</mt:Ignore>
+<mt:Elseif name="search_results">
+<meta property="og:title" content="検索結果 - <mt:Var name='website_name'>">
+<meta property="og:site_name" content="<mt:Var name='website_name'>">
+<meta property="og:image" content="<mt:Var name='og_image_top'>">
+
+<mt:Ignore>ウェブサイト：その他（一覧ページ）</mt:Ignore>
+<mt:Else>
+<meta property="og:title" content="<mt:ArchiveTitle remove_html='1'> - お知らせ - <mt:Var name='website_name'>">
+<meta property="og:site_name" content="<mt:Var name='website_name'>">
+<meta property="og:url" content="<mt:ArchiveLink>">
+<meta property="og:description" content="お知らせ <mt:ArchiveTitle remove_html='1'>の一覧です。">
+<meta property="og:image" content="<mt:Var name='og_image_top'>">
+</mt:If>
+</mt:IfWebsite>
+
+<mt:Ignore>ブログの場合===================================</mt:Ignore>
+<mt:IfBlog>
+<mt:BlogParentWebsite>
+<mt:SetVarBlock name='website_name'><mt:WebsiteName encode_html='1'></mt:SetVarBlock>
+<mt:SetVarBlock name='og_image_top'><mt:WebsiteURL>opg.png</mt:SetVarBlock>
+</mt:BlogParentWebsite>
+
+<mt:Ignore>ブログ：トップページ</mt:Ignore>
+<mt:if name="index_page">
+<meta property="og:title" content="<mt:BlogName remove_html='1'> - <mt:Var name='websitename'>">
+<meta property="og:site_name" content="<mt:Var name='websitename'>">
+<meta property="og:url" content="<mt:BlogURL>">
+<meta property="og:description" content="<mt:BlogDescription remove_html='1' encode_html='1'>">
+<meta property="og:image" content="<mt:Var name='ogimagetop'>">
+
+<mt:Ignore>ブログ：メインページ（使わない）</mt:Ignore>
+<mt:Elseif name="main_index">
+<meta property="og:title" content="<mt:BlogName remove_html='1'> - <mt:Var name='websitename'>">
+<meta property="og:site_name" content="<mt:Var name='websitename'>">
+<meta poperty="og:url" content="<mt:BlogURL>">
+<meta property="og:description" content="<mt:BlogDescription remove_html='1' encode_html='1'>">
+<meta property="og:image" content="<mt:Var name='ogimagetop'>">
+
+<mt:Ignore>ブログ：記事</mt:Ignore>
+<mt:Elseif name="entry_archive">
+<meta property="og:title" content="<mt:EntryTitle remove_html='1'> - <mt:BlogName remove_html='1'> - <mt:Var name='websitename'>">
+<meta property="og:site_name" content="<mt:Var name='websitename'>">
+<meta property="og:url" content="<mt:EntryPermalink>">
+<meta property="og:description" content="<mt:EntryExcerpt remove_html='1' encode_html='1'>">
+<mt:SetVarBlock name='img1'><mt:EntryAssets type='image'>images</mt:EntryAssets></mt:SetVarBlock>
+<meta property="og:image" content="<mt:If name='img1' like='image'><mt:EntryAssets lastn='1'><mt:AssetURL></mt:EntryAssets><mt:Else><mt:Var name='og_image_top'></mt:If>">
+
+<mt:Ignore>ブログ：ページ</mt:Ignore>
+<mt:Elseif name="page_template">
+<meta property="og:title" content="<mt:PageTitle remove_html='1'> - <mt:BlogName remove_html='1'> - <mt:Var name='websitename'>">
+<meta property="og:site_name" content="<mt:Var name='websitename'>">
+<meta property="og:url" content="<mt:PagePermalink>">
+<meta property="og:description" content="<mt:PageExcerpt remove_html='1' encode_html='1'>">
+<mt:SetVarBlock name="img1"><mt:PageAssets type="image">images</mt:PageAssets></mt:SetVarBlock>
+<meta property="og:image" content="<mt:If name="img1" like="image"><mt:PageAssets lastn="1"><$mt:AssetURL$></mt:PageAssets><mt:Else><mt:Var name='ogimagetop'></mt:If>">
+
+<mt:Ignore>ブログ：その他</mt:Ignore>
+<mt:Else>
+<meta property="og:title" content="<mt:ArchiveTitle remove_html='1'> - <mt:BlogName remove_html='1'> - <mt:Var name='websitename'>">
+<meta property="og:site_name" content="<mt:Var name='websitename'>">
+<meta property="og:url" content="<mt:Archivelink>">
+<meta property="og:description" content="<mt:ArchiveTitle remove_html='1'>の記事一覧です。">
+
+</mt:If>
+</mt:IfBlog>
+<!-- /[ Open Graph Protocol ] -->
