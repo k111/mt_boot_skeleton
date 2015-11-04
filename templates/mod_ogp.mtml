@@ -89,7 +89,7 @@ ogimageは、ウェブサイト直下のopg.pngを設定
 <meta property="og:site_name" content="<mt:Var name='websitename'>">
 <meta property="og:url" content="<mt:BlogURL>">
 <meta property="og:description" content="<mt:BlogDescription remove_html='1' encode_html='1'>">
-<meta property="og:image" content="<mt:Var name='ogimagetop'>">
+<meta property="og:image" content="<mt:Var name='og_image_top'>">
 
 <mt:Ignore>ブログ：メインページ（使わない）</mt:Ignore>
 <mt:Elseif name="main_index">
@@ -97,7 +97,7 @@ ogimageは、ウェブサイト直下のopg.pngを設定
 <meta property="og:site_name" content="<mt:Var name='websitename'>">
 <meta poperty="og:url" content="<mt:BlogURL>">
 <meta property="og:description" content="<mt:BlogDescription remove_html='1' encode_html='1'>">
-<meta property="og:image" content="<mt:Var name='ogimagetop'>">
+<meta property="og:image" content="<mt:Var name='og_image_top'>">
 
 <mt:Ignore>ブログ：記事</mt:Ignore>
 <mt:Elseif name="entry_archive">
@@ -115,7 +115,7 @@ ogimageは、ウェブサイト直下のopg.pngを設定
 <meta property="og:url" content="<mt:PagePermalink>">
 <meta property="og:description" content="<mt:PageExcerpt remove_html='1' encode_html='1'>">
 <mt:SetVarBlock name="img1"><mt:PageAssets type="image">images</mt:PageAssets></mt:SetVarBlock>
-<meta property="og:image" content="<mt:If name="img1" like="image"><mt:PageAssets lastn="1"><$mt:AssetURL$></mt:PageAssets><mt:Else><mt:Var name='ogimagetop'></mt:If>">
+<meta property="og:image" content="<mt:If name="img1" like="image"><mt:PageAssets lastn="1"><$mt:AssetURL$></mt:PageAssets><mt:Else><mt:Var name='og_image_top'></mt:If>">
 
 <mt:Ignore>ブログ：その他</mt:Ignore>
 <mt:Else>
